@@ -1,0 +1,40 @@
+---
+
+- name: EXIV2 | Installing dependencies
+  apt:
+    pkg: "{{ item }}"
+    state: present
+  with_items: "{{ exiv2_required_libs }}"
+
+- name: EXIV2 | Ensure paths
+  file:
+    dest: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ exiv2_root_path }}"
+    - "{{ exiv2_tmp }}"
+    - "{{ expat_root_path }}"
+    - "{{ expat_tmp }}"
+
+- name: EXIV2 | Check expat installed
+  stat:
+    path: "{{ expat_root_path }}/expat-{{ expat_version}}"
+  register: expat_check
+  changed_when: false
+
+- name: EXIV2 | Install Expat from sources
+  include: dependencies.yml
+  when:
+    - expat_check.stat.exists == False
+
+- name: EXIV2 | Check exiv2 version
+  command: exiv2 -V
+  register: exiv2_check
+  changed_when: false
+  ignore_errors: true
+
+
+- name: EXIV2 | Install Exiv2 from sources
+  include: install-sources.yml
+  when:
+    - exiv2_force_reinstall or exiv2_check|failed or 'exiv2 ' + (exiv2_version | string) not in exiv2_check.stdout

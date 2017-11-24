@@ -1,0 +1,14 @@
+---
+## General
+
+exiv2_version: 0.26
+expat_version: 2.2.5
+
+# Files & Paths
+exiv2_root_path: /opt/exiv2
+expat_root_path: /opt/expat
+
+
+## Miscellaneous
+# Set true to force the download and installation of the package
+exiv2_force_reinstall: false

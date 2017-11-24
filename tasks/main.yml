@@ -1,0 +1,6 @@
+---
+
+- name: EXIV2 | Install
+  include: install.yml
+  tags:
+    - install
