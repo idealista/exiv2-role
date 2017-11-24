@@ -1,0 +1,16 @@
+exiv2_required_libs:
+  - build-essential
+  - zlib1g-dev
+
+exiv2_sources_package: "exiv2-{{ exiv2_version }}-trunk.tar.gz"
+
+exiv2_sources_url: "http://www.exiv2.org/builds/{{ exiv2_sources_package }}"
+
+exiv2_tmp: /buildexiv2
+
+expat_sources_package: "expat-{{ expat_version }}.tar.bz2"
+expat_version_mod: "{{ expat_version | regex_replace('^(\\d+).(\\d+).(\\d+)$', '\\1_\\2_\\3')}}"
+
+expat_sources_url: "https://github.com/libexpat/libexpat/releases/download/R_{{ expat_version_mod }}/{{ expat_sources_package }}"
+
+expat_tmp: /buildexpat

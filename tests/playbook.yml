@@ -1,0 +1,5 @@
+---
+
+- hosts: exiv2
+  roles:
+    - exiv2-role

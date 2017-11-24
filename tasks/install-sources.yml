@@ -1,0 +1,24 @@
+---
+
+- name: EXIV2 | Download sources package
+  get_url:
+    url: "{{ exiv2_sources_url }}"
+    dest: "{{ exiv2_tmp }}"
+
+- name: EXIV2 | Extract sources package
+  unarchive:
+    copy: no
+    src: "{{ exiv2_tmp }}/{{ exiv2_sources_package }}"
+    dest: "{{ exiv2_root_path }}"
+
+- name: EXIV2 | Build sources
+  command: "{{ item }}"
+  args:
+    chdir: "{{ exiv2_root_path }}/exiv2-trunk"
+  with_items:
+    - ./configure
+    - make
+    - make install
+    - ldconfig
+  tags:
+    skip_ansible_lint

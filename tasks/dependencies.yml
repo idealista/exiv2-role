@@ -1,0 +1,24 @@
+---
+
+- name: EXIV2 | Download expat sources package
+  get_url:
+    url: "{{ expat_sources_url }}"
+    dest: "{{ expat_tmp }}"
+
+- name: EXIV2 | Extract expat sources package
+  unarchive:
+    copy: no
+    src: "{{ expat_tmp }}/{{ expat_sources_package }}"
+    dest: "{{ expat_root_path }}"
+
+- name: EXIV2 | Build expat sources
+  command: "{{ item }}"
+  args:
+    chdir: "{{ expat_root_path }}/expat-{{ expat_version }}"
+  with_items:
+    - ./configure
+    - make
+    - make install
+    - ldconfig
+  tags:
+    skip_ansible_lint
