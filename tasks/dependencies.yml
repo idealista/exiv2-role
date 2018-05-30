@@ -1,17 +1,17 @@
 ---
 
-- name: EXIV2 | Download expat sources package
+- name: EXIV2 | Download Expat sources package
   get_url:
     url: "{{ expat_sources_url }}"
     dest: "{{ expat_tmp }}"
 
-- name: EXIV2 | Extract expat sources package
+- name: EXIV2 | Extract Expat sources package
   unarchive:
     copy: no
     src: "{{ expat_tmp }}/{{ expat_sources_package }}"
     dest: "{{ expat_root_path }}"
 
-- name: EXIV2 | Build expat sources
+- name: EXIV2 | Build Expat sources
   command: "{{ item }}"
   args:
     chdir: "{{ expat_root_path }}/expat-{{ expat_version }}"

@@ -1,10 +1,10 @@
 exiv2_required_libs:
   - build-essential
   - zlib1g-dev
+  - autoconf
 
-exiv2_sources_package: "exiv2-{{ exiv2_version }}-trunk.tar.gz"
-
-exiv2_sources_url: "http://www.exiv2.org/builds/{{ exiv2_sources_package }}"
+exiv2_sources_package: "v{{ exiv2_version }}.tar.gz"
+exiv2_sources_url: "https://github.com/Exiv2/exiv2/archive/{{ exiv2_sources_package }}"
 
 exiv2_tmp: /buildexiv2
 
