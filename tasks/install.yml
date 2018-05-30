@@ -16,7 +16,7 @@
     - "{{ expat_root_path }}"
     - "{{ expat_tmp }}"
 
-- name: EXIV2 | Check expat installed
+- name: EXIV2 | Check Expat installed
   stat:
     path: "{{ expat_root_path }}/expat-{{ expat_version}}"
   register: expat_check
@@ -27,7 +27,7 @@
   when:
     - expat_check.stat.exists == False
 
-- name: EXIV2 | Check exiv2 version
+- name: EXIV2 | Check Exiv2 version
   command: exiv2 -V
   register: exiv2_check
   changed_when: false
