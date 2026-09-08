@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+ansible = "==2.9.27"
+molecule = "==3.0.4"
+docker = "==4.2.2"
+ansible-lint = "==4.2.0"
+# Security floors for transitive dependencies, see #11
+certifi = ">=2024.7.4"
+cryptography = ">=42.0.4"
+cookiecutter = ">=2.1.1"
+
+[requires]
+python_version = "3"

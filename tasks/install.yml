@@ -18,14 +18,14 @@
 
 - name: EXIV2 | Check Expat installed
   stat:
-    path: "{{ expat_root_path }}/expat-{{ expat_version}}"
+    path: "{{ expat_root_path }}/expat-{{ expat_version }}"
   register: expat_check
   changed_when: false
 
 - name: EXIV2 | Install Expat from sources
   include: dependencies.yml
   when:
-    - expat_check.stat.exists == False
+    - not expat_check.stat.exists
 
 - name: EXIV2 | Check Exiv2 version
   command: exiv2 -V
@@ -37,4 +37,4 @@
 - name: EXIV2 | Install Exiv2 from sources
   include: install-sources.yml
   when:
-    - exiv2_force_reinstall or exiv2_check|failed or 'exiv2 ' + (exiv2_version | string) not in exiv2_check.stdout
+    - exiv2_force_reinstall or exiv2_check is failed or 'exiv2 ' + (exiv2_version | string) not in exiv2_check.stdout
