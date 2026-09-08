@@ -4,6 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/exiv2-role/tree/develop)
 
+## [1.0.3](https://github.com/idealista/exiv2-role/tree/1.0.3)
+[Full Changelog](https://github.com/idealista/exiv2-role/compare/1.0.2...1.0.3)
+### Fixed
+- *[#13](https://github.com/idealista/exiv2-role/issues/13) Stop the README promising that `exiv2_version` can be overridden to any release: the role builds with autotools and Exiv2 moved to CMake in 0.27* @danieljesus
+- *[#13](https://github.com/idealista/exiv2-role/issues/13) Document that the role also builds Expat, and the `exiv2_force_reinstall` and path variables* @danieljesus
+
 ## [1.0.2](https://github.com/idealista/exiv2-role/tree/1.0.2)
 [Full Changelog](https://github.com/idealista/exiv2-role/compare/1.0.1...1.0.2)
 ### Added
