@@ -1,6 +1,6 @@
 ![Logo](https://raw.githubusercontent.com/idealista/exiv2-role/master/logo.gif)
 
-[![Build Status](https://travis-ci.org/idealista/exiv2-role.svg?branch=master)](https://travis-ci.org/idealista/exiv2-role)
+[![Build Status](https://app.travis-ci.com/idealista/exiv2-role.svg?branch=master)](https://app.travis-ci.com/idealista/exiv2-role)
 # Exiv2 Ansible role
 
 This ansible role installs Exiv2 image metadata manager tool/libs in a debian environment.
@@ -22,10 +22,10 @@ These instructions will get you a copy of the role for your ansible playbook. On
 
 ### Prerequisities
 
-Ansible 2.3.1.0 version installed.
-Inventory destination should be a Debian environment.
+Ansible 2.3.1.0 or above installed. The role is tested against Ansible 2.9.
+Inventory destination should be a Debian environment. Stretch and Buster are the suites covered by the test matrix.
 
-For testing purposes, [Molecule](https://molecule.readthedocs.io/) with [Docker](https://www.docker.com/) and [Vagrant](https://www.vagrantup.com/) as driver (with [landrush](https://github.com/vagrant-landrush/landrush) plugin) and [VirtualBox](https://www.virtualbox.org/) as provider.
+For testing purposes, Python 3.7 with [Molecule](https://molecule.readthedocs.io/) and [Docker](https://www.docker.com/).
 
 ### Installing
 
@@ -33,7 +33,7 @@ Create or add to your roles dependency file (e.g requirements.yml):
 
 ```
 - src: idealista.exiv2-role
-  version: 1.0.0
+  version: 1.0.2
   name: exiv2
 ```
 
@@ -55,21 +55,27 @@ Use in a playbook:
 
 Look to the [defaults](defaults/main.yml) properties file to see the possible configuration properties.
 
-Default version always is LTS. Feel free to choose another version if you prefer.
+`exiv2_version` defaults to 0.26. Override it to build a different release; the verification step reads the same default, so the test follows along.
 
 ## Testing
 
 ```sh
-molecule test
+$ pip install pipenv
+$ pipenv sync
+$ pipenv run molecule test
+```
+
+The scenario runs against `debian:buster-slim` by default. `MOLECULE_DISTRO` selects the other tested suite:
+
+```sh
+$ MOLECULE_DISTRO=debian:stretch-slim pipenv run molecule test
 ```
 
 ## Built With
 
-![Ansible](https://img.shields.io/badge/ansible-2.3.1.0-green.svg)
-
-![Molecule](https://img.shields.io/badge/molecule-1.25.0-green.svg)
-
-![Goss](https://img.shields.io/badge/goss-0.3.5-green.svg)
+![Ansible](https://img.shields.io/badge/ansible-2.9.27-green.svg)
+![Molecule](https://img.shields.io/badge/molecule-3.0.4-green.svg)
+![Goss](https://img.shields.io/badge/goss-0.3.16-green.svg)
 
 
 ## Versioning
