@@ -12,6 +12,9 @@
     goss_test_directory: /tmp
     goss_format: documentation
 
+  vars_files:
+    - ../../defaults/main.yml
+
   tasks:
     - name: Download and install Goss
       get_url:

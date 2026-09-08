@@ -2,7 +2,7 @@ command:
   exiv2 -V:
     exit-status: 0
     stdout:
-      - '/exiv2\s0.26/'
+      - '/exiv2\s{{ exiv2_version }}/'
     stderr: []
     timeout: 10000
 
