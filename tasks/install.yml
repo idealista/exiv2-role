@@ -37,4 +37,4 @@
 - name: EXIV2 | Install Exiv2 from sources
   include: install-sources.yml
   when:
-    - exiv2_force_reinstall or exiv2_check|failed or 'exiv2 ' + (exiv2_version | string) not in exiv2_check.stdout
+    - exiv2_force_reinstall or exiv2_check is failed or 'exiv2 ' + (exiv2_version | string) not in exiv2_check.stdout
