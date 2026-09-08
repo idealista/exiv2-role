@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  author: Idealista
   company: Idealista S.A.U
   description: Exiv2 image metadata manager tool
   min_ansible_version: 2.3.1.0
@@ -8,6 +9,6 @@ galaxy_info:
     - name: Debian
       versions:
         - stretch
-  categories:
+  galaxy_tags:
     - image
     - metadata

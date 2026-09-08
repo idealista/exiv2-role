@@ -1,5 +1,6 @@
 ---
 
-- hosts: exiv2
+- name: Converge
+  hosts: all
   roles:
     - exiv2-role

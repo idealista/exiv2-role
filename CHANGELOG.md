@@ -8,9 +8,13 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 [Full Changelog](https://github.com/idealista/exiv2-role/compare/1.0.1...1.0.2)
 ### Added
 - *[#7](https://github.com/idealista/exiv2-role/pull/7) (2024-01-17)- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+### Changed
+- *[#11](https://github.com/idealista/exiv2-role/issues/11) Migrate the test suite to Molecule 3 with a pipenv-pinned toolchain, replacing the Molecule 1.25 setup that no longer runs* @danieljesus
+- *[#11](https://github.com/idealista/exiv2-role/issues/11) Declare an `author` and use `galaxy_tags` instead of the deprecated `categories` in the role metadata* @danieljesus
 ### Fixed
 - *[#8](https://github.com/idealista/exiv2-role/issues/8) Use the `is failed` test instead of the `failed` filter removed in Ansible 2.9* @danieljesus
 - *[#8](https://github.com/idealista/exiv2-role/issues/8) Use a Python 2.7 build Travis still ships, so the job can start* @danieljesus
+- *[#11](https://github.com/idealista/exiv2-role/issues/11) Point the molecule container at archive.debian.org, the tested Debian suites are EOL* @danieljesus
 
 ## [1.0.1](https://github.com/idealista/exiv2-role/tree/1.0.1)
 [Full Changelog](https://github.com/idealista/exiv2-role/compare/1.0.1...1.0.0)

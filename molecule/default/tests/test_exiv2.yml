@@ -1,0 +1,23 @@
+command:
+  exiv2 -V:
+    exit-status: 0
+    stdout:
+      - '/exiv2\s0.26/'
+    stderr: []
+    timeout: 10000
+
+file:
+  /opt/exiv2:
+    filetype: directory
+    exists: true
+  /opt/expat:
+    filetype: directory
+    exists: true
+
+package:
+  build-essential:
+    installed: true
+  zlib1g-dev:
+    installed: true
+  autoconf:
+    installed: true
