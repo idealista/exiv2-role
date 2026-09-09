@@ -3,7 +3,7 @@
 [![Build Status](https://app.travis-ci.com/idealista/exiv2-role.svg?branch=master)](https://app.travis-ci.com/idealista/exiv2-role)
 # Exiv2 Ansible role
 
-This ansible role installs Exiv2 image metadata manager tool/libs in a debian environment.
+This ansible role installs Exiv2 image metadata manager tool/libs in a debian environment. It also builds [Expat](https://libexpat.github.io/) from sources, which Exiv2 depends on.
 
 - [Getting Started](#getting-started)
 	- [Prerequisities](#prerequisities)
@@ -33,7 +33,7 @@ Create or add to your roles dependency file (e.g requirements.yml):
 
 ```
 - src: idealista.exiv2-role
-  version: 1.0.2
+  version: 1.0.3
   name: exiv2
 ```
 
@@ -55,7 +55,13 @@ Use in a playbook:
 
 Look to the [defaults](defaults/main.yml) properties file to see the possible configuration properties.
 
-`exiv2_version` defaults to 0.26. Override it to build a different release; the verification step reads the same default, so the test follows along.
+`exiv2_version` defaults to 0.26, and `expat_version` to 2.2.5. Both are built from sources into `exiv2_root_path` and `expat_root_path`.
+
+`exiv2_version` can be overridden within the 0.26 line only: the role builds with autotools (`make config`, `./configure`, `make`), and Exiv2 moved to a CMake-only build in 0.27, so anything from 0.27 onwards fails at `make config`.
+
+The goss spec reads `exiv2_version` from [defaults/main.yml](defaults/main.yml), so changing the default there propagates to the verification. Overriding the variable from a playbook does not — the role would build one version while the test still asserts the default.
+
+Set `exiv2_force_reinstall: true` to rebuild even when the expected version is already installed.
 
 ## Testing
 
